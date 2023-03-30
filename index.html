@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="data/KabupatenKotadiKalimantanTimur_1.js"></script>
+        <script src="data/DIR_Baku_Kab_kaltim_2.js"></script>
+        <script src="data/DIR_Baku_Prov_Kaltim_3.js"></script>
+        <script src="data/DIR_Baku_Pusat_Kaltim_4.js"></script>
+        <script src="data/BatasAdministrasi_5.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-0.14274435525740367,114.99549784550166],[3.0583020738013795,120.60081564412644]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleSatelite_0');
+        map.getPane('pane_GoogleSatelite_0').style.zIndex = 400;
+        var layer_GoogleSatelite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatelite_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_GoogleSatelite_0;
+        map.addLayer(layer_GoogleSatelite_0);
+        function pop_KabupatenKotadiKalimantanTimur_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WADMKK'] !== null ? autolinker.link(feature.properties['WADMKK'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_KabupatenKotadiKalimantanTimur_1_0() {
+            return {
+                pane: 'pane_KabupatenKotadiKalimantanTimur_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,82,45,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_KabupatenKotadiKalimantanTimur_1');
+        map.getPane('pane_KabupatenKotadiKalimantanTimur_1').style.zIndex = 401;
+        map.getPane('pane_KabupatenKotadiKalimantanTimur_1').style['mix-blend-mode'] = 'normal';
+        var layer_KabupatenKotadiKalimantanTimur_1 = new L.geoJson(json_KabupatenKotadiKalimantanTimur_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KabupatenKotadiKalimantanTimur_1',
+            layerName: 'layer_KabupatenKotadiKalimantanTimur_1',
+            pane: 'pane_KabupatenKotadiKalimantanTimur_1',
+            onEachFeature: pop_KabupatenKotadiKalimantanTimur_1,
+            style: style_KabupatenKotadiKalimantanTimur_1_0,
+        });
+        bounds_group.addLayer(layer_KabupatenKotadiKalimantanTimur_1);
+        map.addLayer(layer_KabupatenKotadiKalimantanTimur_1);
+        function pop_DIR_Baku_Kab_kaltim_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Nama_DI</strong><br />' + (feature.properties['Nama_DI'] !== null ? autolinker.link(feature.properties['Nama_DI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Status</th>\
+                        <td>' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kewenangan</th>\
+                        <td>' + (feature.properties['Kewenangan'] !== null ? autolinker.link(feature.properties['Kewenangan'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Keterangan</th>\
+                        <td>' + (feature.properties['Keterangan'] !== null ? autolinker.link(feature.properties['Keterangan'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Luas</th>\
+                        <td>' + (feature.properties['Luas'] !== null ? autolinker.link(feature.properties['Luas'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_DIR_Baku_Kab_kaltim_2_0(feature) {
+            switch(String(feature.properties['Kewenangan'])) {
+                case 'Kab. Berau':
+                    return {
+                pane: 'pane_DIR_Baku_Kab_kaltim_2',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,130,144,0.25882352941176473)',
+                interactive: true,
+            }
+                    break;
+                case 'Kab. Kutai Barat':
+                    return {
+                pane: 'pane_DIR_Baku_Kab_kaltim_2',
+                opacity: 1,
+                color: 'rgba(51,160,44,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,200,156,0.23529411764705882)',
+                interactive: true,
+            }
+                    break;
+                case 'Kab. Kutai Kartanegara':
+                    return {
+                pane: 'pane_DIR_Baku_Kab_kaltim_2',
+                opacity: 1,
+                color: 'rgba(251,154,153,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,75,219,0.23137254901960785)',
+                interactive: true,
+            }
+                    break;
+                case 'Kab. Kutai Timur':
+                    return {
+                pane: 'pane_DIR_Baku_Kab_kaltim_2',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,76,224,0.21176470588235294)',
+                interactive: true,
+            }
+                    break;
+                case 'Kab. Paser':
+                    return {
+                pane: 'pane_DIR_Baku_Kab_kaltim_2',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(124,199,228,0.24313725490196078)',
+                interactive: true,
+            }
+                    break;
+                case 'Kab. Penajam Paser Utara':
+                    return {
+                pane: 'pane_DIR_Baku_Kab_kaltim_2',
+                opacity: 1,
+                color: 'rgba(255,127,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,191,111,0.23921568627450981)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_DIR_Baku_Kab_kaltim_2');
+        map.getPane('pane_DIR_Baku_Kab_kaltim_2').style.zIndex = 402;
+        map.getPane('pane_DIR_Baku_Kab_kaltim_2').style['mix-blend-mode'] = 'normal';
+        var layer_DIR_Baku_Kab_kaltim_2 = new L.geoJson(json_DIR_Baku_Kab_kaltim_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_DIR_Baku_Kab_kaltim_2',
+            layerName: 'layer_DIR_Baku_Kab_kaltim_2',
+            pane: 'pane_DIR_Baku_Kab_kaltim_2',
+            onEachFeature: pop_DIR_Baku_Kab_kaltim_2,
+            style: style_DIR_Baku_Kab_kaltim_2_0,
+        });
+        bounds_group.addLayer(layer_DIR_Baku_Kab_kaltim_2);
+        map.addLayer(layer_DIR_Baku_Kab_kaltim_2);
+        function pop_DIR_Baku_Prov_Kaltim_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Nama_DI</strong><br />' + (feature.properties['Nama_DI'] !== null ? autolinker.link(feature.properties['Nama_DI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Status</th>\
+                        <td>' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kewenangan</th>\
+                        <td>' + (feature.properties['Kewenangan'] !== null ? autolinker.link(feature.properties['Kewenangan'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Keterangan</th>\
+                        <td>' + (feature.properties['Keterangan'] !== null ? autolinker.link(feature.properties['Keterangan'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Luas</th>\
+                        <td>' + (feature.properties['Luas'] !== null ? autolinker.link(feature.properties['Luas'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_DIR_Baku_Prov_Kaltim_3_0() {
+            return {
+                pane: 'pane_DIR_Baku_Prov_Kaltim_3',
+                opacity: 1,
+                color: 'rgba(51,160,44,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,158,23,0.3137254901960784)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_DIR_Baku_Prov_Kaltim_3');
+        map.getPane('pane_DIR_Baku_Prov_Kaltim_3').style.zIndex = 403;
+        map.getPane('pane_DIR_Baku_Prov_Kaltim_3').style['mix-blend-mode'] = 'normal';
+        var layer_DIR_Baku_Prov_Kaltim_3 = new L.geoJson(json_DIR_Baku_Prov_Kaltim_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_DIR_Baku_Prov_Kaltim_3',
+            layerName: 'layer_DIR_Baku_Prov_Kaltim_3',
+            pane: 'pane_DIR_Baku_Prov_Kaltim_3',
+            onEachFeature: pop_DIR_Baku_Prov_Kaltim_3,
+            style: style_DIR_Baku_Prov_Kaltim_3_0,
+        });
+        bounds_group.addLayer(layer_DIR_Baku_Prov_Kaltim_3);
+        map.addLayer(layer_DIR_Baku_Prov_Kaltim_3);
+        function pop_DIR_Baku_Pusat_Kaltim_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Nama_DI</strong><br />' + (feature.properties['Nama_DI'] !== null ? autolinker.link(feature.properties['Nama_DI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Status</th>\
+                        <td>' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kewenangan</th>\
+                        <td>' + (feature.properties['Kewenangan'] !== null ? autolinker.link(feature.properties['Kewenangan'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Keterangan</th>\
+                        <td>' + (feature.properties['Keterangan'] !== null ? autolinker.link(feature.properties['Keterangan'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Luas</th>\
+                        <td>' + (feature.properties['Luas'] !== null ? autolinker.link(feature.properties['Luas'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_DIR_Baku_Pusat_Kaltim_4_0() {
+            return {
+                pane: 'pane_DIR_Baku_Pusat_Kaltim_4',
+                opacity: 1,
+                color: 'rgba(255,127,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,125,183,0.34509803921568627)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_DIR_Baku_Pusat_Kaltim_4');
+        map.getPane('pane_DIR_Baku_Pusat_Kaltim_4').style.zIndex = 404;
+        map.getPane('pane_DIR_Baku_Pusat_Kaltim_4').style['mix-blend-mode'] = 'normal';
+        var layer_DIR_Baku_Pusat_Kaltim_4 = new L.geoJson(json_DIR_Baku_Pusat_Kaltim_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_DIR_Baku_Pusat_Kaltim_4',
+            layerName: 'layer_DIR_Baku_Pusat_Kaltim_4',
+            pane: 'pane_DIR_Baku_Pusat_Kaltim_4',
+            onEachFeature: pop_DIR_Baku_Pusat_Kaltim_4,
+            style: style_DIR_Baku_Pusat_Kaltim_4_0,
+        });
+        bounds_group.addLayer(layer_DIR_Baku_Pusat_Kaltim_4);
+        map.addLayer(layer_DIR_Baku_Pusat_Kaltim_4);
+        function pop_BatasAdministrasi_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LEFT_FID'] !== null ? autolinker.link(feature.properties['LEFT_FID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RIGHT_FID'] !== null ? autolinker.link(feature.properties['RIGHT_FID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BatasAdministrasi_5_0() {
+            return {
+                pane: 'pane_BatasAdministrasi_5',
+                opacity: 1,
+                color: 'rgba(163,163,163,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        function style_BatasAdministrasi_5_1() {
+            return {
+                pane: 'pane_BatasAdministrasi_5',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '10,5,1,5,1,5',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BatasAdministrasi_5');
+        map.getPane('pane_BatasAdministrasi_5').style.zIndex = 405;
+        map.getPane('pane_BatasAdministrasi_5').style['mix-blend-mode'] = 'normal';
+        var layer_BatasAdministrasi_5 = new L.geoJson.multiStyle(json_BatasAdministrasi_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BatasAdministrasi_5',
+            layerName: 'layer_BatasAdministrasi_5',
+            pane: 'pane_BatasAdministrasi_5',
+            onEachFeature: pop_BatasAdministrasi_5,
+            styles: [style_BatasAdministrasi_5_0,style_BatasAdministrasi_5_1,]
+        });
+        bounds_group.addLayer(layer_BatasAdministrasi_5);
+        map.addLayer(layer_BatasAdministrasi_5);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/BatasAdministrasi_5.png" /> Batas Administrasi': layer_BatasAdministrasi_5,'<img src="legend/DIR_Baku_Pusat_Kaltim_4.png" /> DIR_Baku_Pusat_Kaltim': layer_DIR_Baku_Pusat_Kaltim_4,'<img src="legend/DIR_Baku_Prov_Kaltim_3.png" /> DIR_Baku_Prov_Kaltim': layer_DIR_Baku_Prov_Kaltim_3,'DIR_Baku_Kab_kaltim<br /><table><tr><td style="text-align: center;"><img src="legend/DIR_Baku_Kab_kaltim_2_KabBerau0.png" /></td><td>Kab. Berau</td></tr><tr><td style="text-align: center;"><img src="legend/DIR_Baku_Kab_kaltim_2_KabKutaiBarat1.png" /></td><td>Kab. Kutai Barat</td></tr><tr><td style="text-align: center;"><img src="legend/DIR_Baku_Kab_kaltim_2_KabKutaiKartanegara2.png" /></td><td>Kab. Kutai Kartanegara</td></tr><tr><td style="text-align: center;"><img src="legend/DIR_Baku_Kab_kaltim_2_KabKutaiTimur3.png" /></td><td>Kab. Kutai Timur</td></tr><tr><td style="text-align: center;"><img src="legend/DIR_Baku_Kab_kaltim_2_KabPaser4.png" /></td><td>Kab. Paser</td></tr><tr><td style="text-align: center;"><img src="legend/DIR_Baku_Kab_kaltim_2_KabPenajamPaserUtara5.png" /></td><td>Kab. Penajam Paser Utara</td></tr></table>': layer_DIR_Baku_Kab_kaltim_2,'<img src="legend/KabupatenKotadiKalimantanTimur_1.png" /> Kabupaten Kota di Kalimantan Timur': layer_KabupatenKotadiKalimantanTimur_1,"Google Satelite": layer_GoogleSatelite_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_KabupatenKotadiKalimantanTimur_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['WADMKK'] !== null?String('<div style="color: #ffffff; font-size: 5pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['WADMKK']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_KabupatenKotadiKalimantanTimur_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_KabupatenKotadiKalimantanTimur_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_KabupatenKotadiKalimantanTimur_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_KabupatenKotadiKalimantanTimur_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_KabupatenKotadiKalimantanTimur_1]);
+        });
+        </script>
+    </body>
+</html>
